@@ -1,5 +1,8 @@
 module.exports = {
-  "transpileDependencies": [
-    "vuetify"
-  ]
-}
+  transpileDependencies: ["vuetify"],
+  configureWebpack: {
+    devServer: {
+      disableHostCheck: true,
+    },
+  },
+};
