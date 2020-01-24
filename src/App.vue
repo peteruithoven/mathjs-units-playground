@@ -9,12 +9,17 @@
           <section class="flex-grow-1 mr-3">
             <h2>Source</h2>
             <v-text-field label="Unit" placeholder="kg" v-model="sourceUnit" />
-            <v-text-field label="Value" v-model="sourceValue" />
+            <v-label>Unit base</v-label>
+            <p>{{ sourceUnitBase }}</p>
+            <v-text-field label="Value" v-model="sourceValue" type="number" />
           </section>
           <section class="flex-grow-1">
             <h2>Target</h2>
             <v-text-field label="Unit" placeholder="kg" v-model="targetUnit" />
-            {{ result.value }}
+            <v-label>Unit base</v-label>
+            <p>{{ targetUnitBase }}</p>
+            <v-label>Result</v-label>
+            <p>{{ result.value }}</p>
           </section>
         </section>
         <v-alert v-if="result.error" type="error">
@@ -36,6 +41,12 @@ export default {
     sourceValue: 1,
   }),
   computed: {
+    sourceUnitBase() {
+      return math.getUnitBase(this.sourceUnit);
+    },
+    targetUnitBase() {
+      return math.getUnitBase(this.targetUnit);
+    },
     result() {
       let value = "";
       let error = "";
