@@ -26,11 +26,7 @@
 </template>
 
 <script>
-import { create, unitDependencies } from "mathjs";
-
-const math = create({
-  unitDependencies,
-});
+import math from "@/utils/math";
 
 export default {
   name: "App",
